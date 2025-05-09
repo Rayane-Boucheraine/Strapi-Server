@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "startups",
+  "info": {
+    "singularName": "startup",
+    "pluralName": "startups",
+    "displayName": "Startup"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Description": {
+      "type": "richtext"
+    },
+    "status_of_startup": {
+      "type": "enumeration",
+      "enum": [
+        "Active",
+        "Paused",
+        "Gratuated"
+      ]
+    },
+    "foundedDate": {
+      "type": "date"
+    },
+    "Logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "mentors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::mentor.mentor",
+      "mappedBy": "startups"
+    },
+    "programs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::program.program",
+      "mappedBy": "startup"
+    }
+  }
+}
